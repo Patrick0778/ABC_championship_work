@@ -1,38 +1,154 @@
+/* === Reset default app styles === */
 .App {
-  text-align: center;
+  text-align: left; /* Changed from center to left-align content */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f9f9fb;
+  padding: 0;
+  margin: 0;
 }
 
+/* === Removed React logo animation styles === */
 .App-logo {
-  height: 40vmin;
-  pointer-events: none;
+  display: none; /* No longer used, hiding the spinning logo */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* === Header/NavBar Styles === */
+.navbar {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  padding: 1rem 2rem;
+  /* background: linear-gradient(to right, #00c9ff, #92fe9d); */
+  background-color: #002855; /* Deep navy blue */
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.nav-links a {
+  margin: 0 1rem;
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.connect-wallet {
+  background-color: white;
+  color: #00c9ff;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* === Dashboard Main Area === */
+.dashboard {
+  padding: 2rem;
+}
+
+.dashboard h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.subtext {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 2rem;
+}
+
+/* === Status Cards === */
+.status-cards {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.card {
+  flex: 1;
+  min-width: 200px;
+  background-color: white;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.card h3 {
+  margin-bottom: 0.5rem;
+}
+
+.card.issued {
+  border-left: 4px solid #2ecc71;
+}
+
+.card.pending {
+  border-left: 4px solid #f1c40f;
+}
+
+.card.revoked {
+  border-left: 4px solid #e74c3c;
+}
+
+.card a {
+  text-decoration: underline;
+  font-size: 0.9rem;
+  color: #0077cc;
+}
+
+/* === Wallet Section === */
+.wallet-status {
+  background-color: #fff;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  border-left: 4px solid #3498db;
+  border-radius: 8px;
+}
+
+.wallet-status h3 {
+  margin: 0;
+}
+
+.wallet-status p {
+  margin: 0.5rem 0;
+}
+
+.wallet-status .connect-wallet {
+  margin-top: 0.5rem;
+}
+
+/* === Credential Form Section === */
+.form-section {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.form-section h2 {
+  margin-bottom: 1rem;
+}
+
+/* === Responsive === */
+@media (max-width: 768px) {
+  .status-cards {
+    flex-direction: column;
   }
-  to {
-    transform: rotate(360deg);
+
+  .nav-links {
+    display: none; /* Optional: hide nav links on mobile */
+  }
+
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .connect-wallet {
+    margin-top: 0.5rem;
   }
 }
