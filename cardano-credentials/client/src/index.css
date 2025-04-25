@@ -17,14 +17,12 @@ body {
   color: var(--black);
 }
 
-/* Code styling remains unchanged */
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
 
-/* === New styles === */
-
+/* === App Layout === */
 .app-container {
   display: flex;
   background: var(--white);
@@ -65,9 +63,26 @@ code {
 }
 
 .main-content {
+  position: relative;
   padding: 2rem;
   flex: 1;
-  background: var(--white);
+  background-color: var(--white);
+  overflow: hidden;
+}
+
+.main-content::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("../public/bg.jpg") no-repeat center center;
+  background-size: cover;
+  opacity: 0.5;
+  z-index: 0;
+}
+
+.main-content > * {
+  position: relative;
+  z-index: 1;
 }
 
 .highlight {
@@ -75,6 +90,7 @@ code {
   font-weight: bold;
 }
 
+/* === Dashboard Cards === */
 .product-card {
   background: var(--soft-gray);
   border-radius: 12px;
@@ -88,4 +104,60 @@ code {
   width: 100px;
   height: auto;
   margin-bottom: 1rem;
+}
+
+/* === Form Styling === */
+.form-section {
+  background-color: var(--soft-gray);
+  padding: 2rem;
+  border-radius: 16px;
+  margin-top: 2rem;
+}
+
+form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+}
+
+form input[type="text"],
+form input[type="file"],
+form button {
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  font-family: inherit;
+}
+
+form input[type="text"],
+form input[type="file"] {
+  background-color: var(--white);
+  color: var(--black);
+}
+
+form button {
+  background-color: var(--teal);
+  color: var(--white);
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+form button:hover {
+  background-color: #1e6477;
+}
+
+/* === Responsive Form === */
+@media (max-width: 600px) {
+  form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  form input,
+  form button {
+    width: 100%;
+  }
 }
