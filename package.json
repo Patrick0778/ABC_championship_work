@@ -4,5 +4,10 @@
     "@meshsdk/react": "^1.9.0-beta.32",
     "axios": "^1.8.4",
     "dotenv": "^16.5.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^4.1.4"
   }
 }
