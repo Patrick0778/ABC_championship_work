@@ -1,3 +1,11 @@
+:root {
+  --black: #252525;
+  --gray: #8D9182;
+  --soft-gray: #EDEDED;
+  --white: #FFFFFF;
+  --teal: #28809A;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -5,9 +13,79 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--soft-gray);
+  color: var(--black);
 }
 
+/* Code styling remains unchanged */
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+/* === New styles === */
+
+.app-container {
+  display: flex;
+  background: var(--white);
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  min-height: 100vh;
+}
+
+.sidebar {
+  background-color: var(--black);
+  color: var(--white);
+  padding: 2rem;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  padding: 0.5rem 0;
+  cursor: pointer;
+}
+
+.sidebar li.active {
+  color: var(--teal);
+}
+
+.signout {
+  margin-top: 2rem;
+  color: var(--gray);
+  cursor: pointer;
+}
+
+.main-content {
+  padding: 2rem;
+  flex: 1;
+  background: var(--white);
+}
+
+.highlight {
+  color: var(--black);
+  font-weight: bold;
+}
+
+.product-card {
+  background: var(--soft-gray);
+  border-radius: 12px;
+  padding: 1rem;
+  text-align: center;
+  width: 200px;
+  margin-top: 1rem;
+}
+
+.product-image {
+  width: 100px;
+  height: auto;
+  margin-bottom: 1rem;
 }

@@ -1,65 +1,72 @@
 import React from "react";
-import "./App.css"; // Import your global styles
-import CredentialForm from "./components/CredentialForm"; // Import your form component
+import "./index.css"; // Use the styled index.css file
+import CredentialForm from "./components/CredentialForm";
 
 function App() {
   return (
     <div className="app-container">
-      {/* Navigation bar section */}
-      <header className="navbar">
-        <h2 className="logo">Cardano credentials</h2>
-        <nav className="nav-links">
-          <a href="/">Dashboard</a>
-          <a href="/">Credentials</a>
-          <a href="/">Upload</a>
-          <button className="connect-wallet">Connect Wallet</button>
-        </nav>
-      </header>
+      {/* Sidebar navigation */}
+      <aside className="sidebar">
+        <div>
+          <h2 className="highlight">Cardano</h2>
+          <ul>
+            <li className="active">Dashboard</li>
+            <li>Credentials</li>
+            <li>Upload</li>
+          </ul>
+        </div>
+        <div className="signout">Sign Out</div>
+      </aside>
 
       {/* Dashboard main section */}
-      <main className="dashboard">
-        <h1>Dashboard</h1>
-        <p className="subtext">
-          Manage your digital credentials on Cardano blockchain
-        </p>
+      <main className="main-content">
+        <header className="navbar">
+          <h2 className="highlight">Cardano Credentials</h2>
+          <nav className="nav-links">
+            <a href="/">Dashboard</a>
+            <a href="/">Credentials</a>
+            <a href="/">Upload</a>
+            <button className="connect-wallet">Connect Wallet</button>
+          </nav>
+        </header>
 
-        {/* Status summary cards */}
-        <div className="status-cards">
-          {/* Issued credentials card */}
-          <div className="card issued">
-            <h3>✅ Issued Credentials</h3>
-            <p>2 Active credentials on blockchain</p>
-            <a href="/">View all</a>
+        <section className="dashboard">
+          <h1 className="highlight">Dashboard</h1>
+          <p className="subtext">
+            Manage your digital credentials on the Cardano blockchain
+          </p>
+
+          <div className="status-cards">
+            <div className="card issued product-card">
+              <h3>✅ Issued Credentials</h3>
+              <p>2 Active credentials on blockchain</p>
+              <a href="/">View all</a>
+            </div>
+
+            <div className="card pending product-card">
+              <h3>⏳ Pending Credentials</h3>
+              <p>1 Waiting to be issued</p>
+              <a href="/">View all</a>
+            </div>
+
+            <div className="card revoked product-card">
+              <h3>🚫 Revoked Credentials</h3>
+              <p>0 No longer valid</p>
+              <a href="/">View all</a>
+            </div>
           </div>
 
-          {/* Pending credentials card */}
-          <div className="card pending">
-            <h3>⏳ Pending Credentials</h3>
-            <p>1 Waiting to be issued</p>
-            <a href="/">View all</a>
+          <div className="wallet-status">
+            <h3>Wallet Status</h3>
+            <p>No wallet connected</p>
+            <button className="connect-wallet">Connect Wallet</button>
           </div>
 
-          {/* Revoked credentials card */}
-          <div className="card revoked">
-            <h3>🚫 Revoked Credentials</h3>
-            <p>0 No longer valid</p>
-            <a href="/">View all</a>
+          <div className="form-section">
+            <h2>New Credential</h2>
+            <CredentialForm />
           </div>
-        </div>
-
-        {/* Wallet connection status */}
-        <div className="wallet-status">
-          <h3>Wallet Status</h3>
-          <p>No wallet connected</p>
-          <button className="connect-wallet">Connect Wallet</button>
-        </div>
-
-        {/* Credential form section */}
-        <div className="form-section">
-          <h2>New Credential</h2>
-          {/* Render the credential form component */}
-          <CredentialForm />
-        </div>
+        </section>
       </main>
     </div>
   );
