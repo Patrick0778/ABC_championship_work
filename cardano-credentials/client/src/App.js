@@ -38,19 +38,19 @@ function App() {
 
           <div className="status-cards">
             <div className="card issued product-card">
-              <h3>✅ Issued Credentials</h3>
+              <h3> Issued Credentials</h3>
               <p>2 Active credentials on blockchain</p>
               <a href="/">View all</a>
             </div>
 
             <div className="card pending product-card">
-              <h3>⏳ Pending Credentials</h3>
+              <h3> Pending Credentials</h3>
               <p>1 Waiting to be issued</p>
               <a href="/">View all</a>
             </div>
 
             <div className="card revoked product-card">
-              <h3>🚫 Revoked Credentials</h3>
+              <h3> Revoked Credentials</h3>
               <p>0 No longer valid</p>
               <a href="/">View all</a>
             </div>
