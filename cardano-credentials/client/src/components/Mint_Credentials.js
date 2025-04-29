@@ -1,5 +1,6 @@
 // src/components/MintCredential.js
-import { useWallet, useLovelace, BlockfrostProvider, mintAsset } from '@meshsdk/react';
+//import { useWallet, useLovelace, BlockfrostProvider, mintAsset }
+import { useWallet} from '@meshsdk/react';
 import { Transaction, ForgeScript } from '@meshsdk/core';
 
 const MintCredential = ({ ipfsHash, metadata }) => {
