@@ -74,9 +74,9 @@ code {
   content: "";
   position: absolute;
   inset: 0;
-  background: url("../public/bg.jpg") no-repeat center center;
+  background: url("../public/yale_15.jpg") no-repeat center center;
   background-size: cover;
-  opacity: 0.5 ;
+  opacity: 0.9;
   z-index: 0;
 }
 
@@ -91,13 +91,14 @@ code {
 }
 
 /* === Dashboard Cards === */
+
 .product-card {
   background: var(--soft-gray);
   border-radius: 12px;
   padding: 1rem;
   text-align: center;
   width: 200px;
-  margin-top: 1rem;
+  margin-top: 1rem; /* Reverting to original vertical margin */
 }
 
 .product-image {
