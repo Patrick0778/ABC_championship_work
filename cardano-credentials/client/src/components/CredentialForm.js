@@ -1,50 +1,58 @@
 // src/components/CredentialForm.js
+import React, { useState } from 'react';
+import { uploadFileToIPFS } from './UploadToIPFS';
+import MintCredential from './MintCredential';
 
-import React, { useState } from "react";
-import uploadToIPFS from "./UploadToIPFS";
+function CredentialForm() {
+  const [file, setFile] = useState(null);
+  const [metadata, setMetadata] = useState(null);
+  const [ipfsHash, setIpfsHash] = useState(null);
 
-const CredentialForm = () => {
-  const [form, setForm] = useState({
-    name: "",
-    program: "",
-    institution: "",
-    grade: "",
-    file: null,
-  });
-
-  const handleChange = (e) => {
-    const { name, value, files } = e.target;
-    setForm({
-      ...form,
-      [name]: files ? files[0] : value,
-    });
+  const handleFileChange = (e) => {
+    setFile(e.target.files[0]);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Upload to IPFS
-    const ipfsHash = await uploadToIPFS(form.file);
-    if (!ipfsHash) {
-      alert("Upload to IPFS failed");
-      return;
-    }
+    if (!file) return;
 
-    console.log("Credential IPFS Hash:", ipfsHash);
-    alert(`Successfully uploaded to IPFS: ${ipfsHash}`);
-    // You can then call Mesh.js to mint NFT with metadata
+    // 1. Upload file to IPFS
+    const ipfsUrl = await uploadFileToIPFS(file);
+    const hash = ipfsUrl.replace('ipfs://', '');
+    setIpfsHash(hash);
+
+    // 2. Create metadata
+    const formData = new FormData(e.target);
+    const metadataObj = {
+      name: `Diploma - ${formData.get('studentName')}`,
+      attributes: {
+        student: formData.get('studentName'),
+        institution: formData.get('institution'),
+        program: formData.get('program'),
+        issued_on: new Date().toISOString().split('T')[0],
+      }
+    };
+
+    setMetadata(metadataObj);
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input type="text" name="name" placeholder="Student Name" onChange={handleChange} required />
-      <input type="text" name="program" placeholder="Program" onChange={handleChange} required />
-      <input type="text" name="institution" placeholder="Institution" onChange={handleChange} required />
-      <input type="text" name="grade" placeholder="Grade" onChange={handleChange} required />
-      <input type="file" name="file" accept=".pdf,.jpg,.png" onChange={handleChange} required />
-      <button type="submit">Upload & Mint</button>
-    </form>
+    <div>
+      <form onSubmit={handleSubmit}>
+        <input name="studentName" placeholder="Student Name" required />
+        <input name="institution" placeholder="Institution" required />
+        <input name="program" placeholder="Program" required />
+        <input type="file" onChange={handleFileChange} required />
+        <button type="submit">Upload & Prepare NFT</button>
+      </form>
+
+      {/* Trigger NFT minting if data is ready */}
+      {ipfsHash && metadata && (
+        <MintCredential ipfsHash={ipfsHash} metadata={metadata} />
+      )}
+    </div>
   );
-};
+}
 
 export default CredentialForm;
