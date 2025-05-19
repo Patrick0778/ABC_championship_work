@@ -2,6 +2,12 @@ import React from "react";
 import "./index.css"; // Use the styled index.css file
 import CredentialForm from "./components/CredentialForm";
 import { WalletProvider } from "@meshsdk/react";
+// import { BlockfrostProvider } from "@meshsdk/core";
+
+// const blockfrost = new BlockfrostProvider(
+//   'https://cardano-preprod.blockfrost.io/api/v0', 
+//   process.env.REACT_APP_BLOCKFROST_API_KEY
+// );
 
 function App() {
   return (
